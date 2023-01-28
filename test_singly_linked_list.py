@@ -35,7 +35,6 @@ class TestSLinkedList(unittest.TestCase):
         
         linked_list = SLinkedList()
         linked_list.append(1,2,3,4,5)
-        
         self.assertEqual(len(linked_list), 5)
         self.assertEqual(len(linked_list.delete(5)), 4)
         self.assertEqual(len(linked_list.delete(None)),4)
@@ -67,6 +66,8 @@ class TestSLinkedList(unittest.TestCase):
         self.assertEqual(str(linked_list_two.insert_before(3, 2)), "[2]")
         self.assertEqual(str(linked_list_two.insert_before(None, 2)), "[2]")
         self.assertEqual(str(linked_list_two.insert_before(2, None)), "[2]")
+        self.assertEqual(str(linked_list_two.insert_before(444, 26)), "[2, 26]")
+        
         
         
     def test_insert_after(self):
@@ -76,12 +77,15 @@ class TestSLinkedList(unittest.TestCase):
         linked_list_one.append(1,2,3,4,5)
         self.assertEqual(str(linked_list_one.insert_after(2, 0)), "[1, 2, 0, 3, 4, 5]")
         self.assertEqual(str(linked_list_one.insert_after(1, "frank")), "[1, 'frank', 2, 0, 3, 4, 5]")
+        self.assertEqual(str(linked_list_one.insert_after("Idontexist", "john")), "[1, 'frank', 2, 0, 3, 4, 5, 'john']")
+        
         
         linked_list_two = SLinkedList()
         linked_list_two.append()
         self.assertEqual(str(linked_list_two.insert_before(3, 2)), "[2]")
         self.assertEqual(str(linked_list_two.insert_before(None, 2)), "[2]")
         self.assertEqual(str(linked_list_two.insert_before(2, None)), "[2]")
+        
         
         
 if __name__ == '__main__':
