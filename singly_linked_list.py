@@ -81,12 +81,8 @@ class SLinkedList():
         :rtype: string
         """
         
-        elements = []
+        return str([node.data for node in self])
         
-        for current_node in self:
-            elements.append(current_node.data)
-        return str(elements)
-            
     def __len__(self):
         """
         Counts nodes and returns number
@@ -151,7 +147,7 @@ class SLinkedList():
             return self    
 
         # If head node has `existing_data` make `new_node` head
-        if self.head.data is existing_data:
+        if self.head.data == existing_data:
             new_node.next = self.head
             self.head = new_node
             return self
@@ -193,7 +189,7 @@ class SLinkedList():
             return self    
         
         for current_node in self:
-            if current_node.data is existing_data:
+            if current_node.data == existing_data:
 
                 # Logic based on if `existing_data` is tail node 
                 if current_node.next is None:
@@ -225,7 +221,7 @@ class SLinkedList():
         previous_node = self.head
         
         for current_node in self:
-            if current_node.data is unwanted_value:
+            if current_node.data == unwanted_value:
                 
                 # Logic based on if unwanted value is tail node
                 if current_node.next is None:

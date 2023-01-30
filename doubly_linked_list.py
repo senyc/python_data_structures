@@ -110,13 +110,8 @@ class DLinkedList():
         :rtype: string
         """
         
-        elements = []
-        
-        for current_node in self:
-            elements.append(current_node.data)
-            
-        return str(elements)
-    
+        return str([node.data for node in self])
+
     def __len__(self):
         """
         Counts nodes and returns number
@@ -131,6 +126,7 @@ class DLinkedList():
         for _ in self: length += 1
         
         return length
+    
     def append(self, *args):
         """
         Takes in variable inputs (nonstandard but fun)
@@ -145,7 +141,6 @@ class DLinkedList():
                 continue
 
             new_node = Node(arg)
-            current_node = self.head
             
             # If empty list, make `new_node` head
             if self.head is None:
@@ -182,14 +177,14 @@ class DLinkedList():
             self.head = new_node
             return self    
         
-        if self.head.data is existing_data:
+        if self.head.data == existing_data:
             self.head.next.prev = new_node
             new_node.next = self.head
             self.head = new_node
             return self
 
         for current_node in self:
-            if current_node.data is existing_data:
+            if current_node.data == existing_data:
                 
                 # Sets new_node next/prev then add node to the stream
                 new_node.next = current_node
@@ -226,7 +221,7 @@ class DLinkedList():
             return self
                 
         for current_node in self:
-            if current_node.data is existing_data:
+            if current_node.data == existing_data:
                 if current_node.next is not None:
                     
                     # Sets `new_node` next/prev then add node to the stream
@@ -258,7 +253,7 @@ class DLinkedList():
             return self
         
         for current_node in self:
-            if current_node.data is unwanted_value:
+            if current_node.data == unwanted_value:
                 
                 # Replaces head node if data is `unwanted_value`
                 if current_node is self.head:
@@ -291,11 +286,11 @@ class DLinkedList():
         if invalid_data(data):
             return None
         
-        if self.head.data is data:
+        if self.head.data == data:
             return None
         
         for current_node in self:
-            if current_node.data is data:
+            if current_node.data == data:
                 return current_node.prev
             
         return None
@@ -315,7 +310,7 @@ class DLinkedList():
             return None
         
         for current_node in self:
-            if current_node.data is data:
+            if current_node.data == data:
                 if current_node.next is not None:
                     return current_node.next
                 
