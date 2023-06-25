@@ -1,18 +1,19 @@
 import unittest
+
 from stack import Stack
 
 class TestStack(unittest.TestCase):
-    
+
     def test_push(self):
         stack = Stack()
         self.assertEqual(len(stack), 0)
-        
+
         stack.push(4)
         stack.push(3)
         stack.push(2)
         stack.push(1)
         self.assertEqual(len(stack), 4)
-        
+
         stack.push(1)
         self.assertEqual(len(stack), 5)
 
@@ -37,6 +38,7 @@ class TestStack(unittest.TestCase):
         stack_three = Stack()
 
         self.assertEqual(stack_three.pop(), None)
-        
+
+
 if __name__ == '__main__':
     unittest.main()
