@@ -3,7 +3,6 @@ import unittest
 from stack import Stack
 
 class TestStack(unittest.TestCase):
-
     def test_push(self):
         stack = Stack()
         self.assertEqual(len(stack), 0)
@@ -31,13 +30,15 @@ class TestStack(unittest.TestCase):
         stack_two = Stack()
         stack_two.push(1, 2, 3, 4, 5, 6, 100)
 
-        self.assertEqual(str(stack_two.pop()), '100')
+        item = stack_two.pop()
+        self.assertEqual(str(item), '100')
         stack_two.pop()
-        self.assertEqual(str(stack_two.pop()), '5')
+        item = stack_two.pop()
+        self.assertEqual(str(item), '5')
 
         stack_three = Stack()
-
-        self.assertEqual(stack_three.pop(), None)
+        item = stack_three.pop()
+        self.assertEqual(item, None)
 
 
 if __name__ == '__main__':
